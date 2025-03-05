@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 INPUT 1 OUTPUT TEMPLATE</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: hotpink;
+        }
+
+        /* Style for input fields */
+        input {
+            width: 120px;
+            height: 30px;
+            font-size: 20px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        /* Style for the submit button */
+        #submitButton {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #submitButton:hover {
+            background-color: #45a049;
+        }
+
+        /* Style for the displayed image */
+        #displayedImage {
+            display: none;
+            margin-top: 20px;
+            width: 300px;
+            height: auto;
+        }
+
+        /* Error message */
+        #errorMessage {
+            color: red;
+            font-size: 16px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Enter Two Letters or Two Numbers</h2>
+
+    <h3>🐻: I want to see rainbow, can help me find it? </h3>
+
+    <p>Hint 2: A + Rainb(?)w = 🌈</p>
+    <!-- Input fields -->
+    <input type="text" id="charInput1" maxlength="1" placeholder="A-Z or 1-2">
+    <input type="text" id="charInput2" maxlength="1" placeholder="A-Z or 1-2">
+
+    <!-- Submit button -->
+    <button onclick="displayImage()" id="submitButton">Rainbow!</button>
+
+    <!-- Error message display -->
+    <div id="errorMessage"></div>
+
+    <!-- Image to be displayed -->
+    <img id="displayedImage" src="" alt="Displayed Image">
+
+    <script>
+        function displayImage() {
+            const imgElement = document.getElementById("displayedImage");
+            const errorMessage = document.getElementById("errorMessage");
+
+            // Get input values and convert to uppercase
+            let input1_letter = document.getElementById("charInput1").value.toUpperCase();
+            let input2_letter = document.getElementById("charInput2").value.toUpperCase();
+
+            // Validate inputs
+            if (!input1_letter.match(/[A-Z0-9]/) || !input2_letter.match(/[A-Z0-9]/)) {
+            errorMessage.textContent = "Please enter only letters (A-Z) or numbers (0-9).";
+            errorMessage.style.display = "block";
+            imgElement.style.display = "none";
+            return;
+            }
+
+
+            // Reset error message if inputs are valid
+            errorMessage.style.display = "none";
+
+            // Convert letters to ASCII numbers
+            let input1_number = input1_letter.charCodeAt(0);
+            let input2_number = input2_letter.charCodeAt(0);
+
+            // Logic for displaying images based on input conditions
+
+            if (input1_letter === "A" && input2_letter == "O"){
+                imgElement.src = "https://media.giphy.com/media/RhGNDLk9plXWWqW9RM/giphy.gif?cid=790b7611pkgwyo7fosofrtiys9qrzbug1b8zsp5x1cxpo0m1&ep=v1_gifs_search&rid=giphy.gif&ct=g";
+            } 
+            else{
+                imgElement.src = "https://media.giphy.com/media/8Frnj3MI2kAmjD08WC/giphy.gif?cid=790b7611xd8edvklr93sykyuxm2xo4gos6w0kww83ei8gerv&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+            }
+
+            // Show the image
+            imgElement.style.display = "block";
+        }
+    </script>
+
+<button class="button"><a href="strawberry.html">Next!</a></button>
+
+</body>
+</html>
